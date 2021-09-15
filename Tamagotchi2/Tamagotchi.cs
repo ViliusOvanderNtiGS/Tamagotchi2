@@ -7,7 +7,12 @@ namespace Tamagotchi2
     {
         int hunger = 0;
         int boredom = 0;
-        List<string> words = new List<string>();
+        List<string> words = new List<string>()
+        {
+            "Hello",
+            "Korv",
+            "Shit >:-)"
+        };
         bool isAlive = true;
         Random generator = new Random();
         //int r = generator.Next();
@@ -21,12 +26,18 @@ namespace Tamagotchi2
 
         public void Hi()
         {
+            int r = generator.Next(0, words.Count);
+            System.Console.WriteLine(name + " says " + words[r]);
+            ReduceBoredom();
 
         }
 
         public void Teach(string word)
         {
-
+            // System.Console.WriteLine("What new word do you want " + name + " to know?");
+            // string svar = Console.ReadLine();
+            words.Add(word);
+            ReduceBoredom();
         }
 
         public void Tick()
